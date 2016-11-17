@@ -29,8 +29,12 @@ public class Produit implements Serializable{
 	@NotEmpty
 	private String nomProduit;
 	
-	@Column(name="description", nullable=false)
+	@Column(name="DESCRIPTION", nullable=false)
 	private String description;
+	
+	@Column(name="TAILLE", nullable=false)
+	private String taille;
+	
 	
 	@Column(name="PRIX",nullable=false)
 	private double prix;
@@ -102,6 +106,14 @@ public class Produit implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getTaille() {
+		return taille;
+	}
+
+	public void setTaille(String taille) {
+		this.taille = taille;
 	}
 
 	public boolean isNouvelle() {
