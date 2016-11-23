@@ -38,14 +38,14 @@ public class ControllerHome {
 
 	
 	@RequestMapping(value="/detailProduit")
-	public  String affdetail(Model model,@RequestParam ("id") long id){
+	public  String affdetail(Model model,@RequestParam ("id") int id){
 		Produit produit = (Produit) produitMetier.getProduitById(id);
 		model.addAttribute("produit", produit);
 		return "detailProduit";
 	}
 	
 	@RequestMapping(value="/addPanier")
-	public String addPanier (HttpSession session, @RequestParam("id") long id, @RequestParam("qte") int qte){
+	public String addPanier (HttpSession session, @RequestParam("id") int id, @RequestParam("qte") int qte){
 		Panier  panier = (Panier)session.getAttribute("panier");
 		Produit produit = produitMetier.getProduitById(id);
 		if (panier == null){

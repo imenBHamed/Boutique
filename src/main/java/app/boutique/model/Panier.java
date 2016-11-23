@@ -8,7 +8,6 @@ import app.boutique.dto.Produit;
 
 public class Panier {
 
-
 	private List<Produit> items = new ArrayList<Produit>();
 
 	private double totalTPS=0.0;
