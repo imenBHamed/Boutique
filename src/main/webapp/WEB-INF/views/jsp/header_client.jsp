@@ -15,7 +15,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="listProduit.html"><img src="<c:url value="/resources/assets/images/accueil.jpg" />" /><br><b>Accueil </b></a></li>
-								<li><a href="#"><img src="<c:url value="/resources/assets/images/panier.jpg" />" /><br><b>Panier </b></a></li>                                 
+								<li><a href="panier.html"><img src="<c:url value="/resources/assets/images/panier.jpg" />" /><br><b>Panier </b></a></li>                                 
  							</ul>
 						</div>
 					</div>
