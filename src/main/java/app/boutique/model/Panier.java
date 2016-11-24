@@ -18,7 +18,7 @@ public class Panier {
 	private double totalHT=0.0;
 
 	public double arrondiDouble(double val){
-		DecimalFormat df=new DecimalFormat("0.00");
+		DecimalFormat df=new DecimalFormat("0.0");
 		String formate = df.format(val); 
 		try {
 			return (Double)df.parse(formate);
@@ -47,7 +47,7 @@ public class Panier {
 			items.add(produit);
 		}
 		totalHT= totalHT + (produit.getPrixTotal());		
-		totalTPS =  arrondiDouble(TPS * totalHT);
+		totalTPS =  TPS * totalHT;
 		totalTVQ = arrondiDouble(TVQ * totalHT);
 		total =  arrondiDouble(totalHT + totalTVQ + totalTPS) ;
 	}

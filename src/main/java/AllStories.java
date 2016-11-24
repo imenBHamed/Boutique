@@ -18,6 +18,7 @@ import org.jbehave.core.reporters.*;
 import org.jbehave.core.steps.CandidateSteps;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.SilentStepMonitor;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,6 +35,7 @@ public class AllStories extends JUnitStories {
 	@Override
 	public Configuration configuration() {
 		Class<? extends Embeddable> embeddableClass = this.getClass();
+		selenium.setContext("A real test, using the real Selenium on the browser side served by jetty, driven from java");
 		return new SeleniumConfiguration()
 				.useSelenium(selenium)
 				.useSeleniumContext(seleniumContext)
@@ -45,24 +47,25 @@ public class AllStories extends JUnitStories {
 						new StoryReporterBuilder()
 								.withFormats(org.jbehave.core.reporters.StoryReporterBuilder.Format.CONSOLE));
 	}
-
 	
-	public List<CandidateSteps> CandidateSteps() {
-		return new InstanceStepsFactory(configuration(), new PanierSteps(
-				selenium)).createCandidateSteps();
-	}
+	  @Override
+	    public List<CandidateSteps> candidateSteps() {        
+	       
+	        return new InstanceStepsFactory(configuration(), new PanierSteps(selenium)).createCandidateSteps();
+	    }
 
 	@Before
 	public void setUp() throws Exception {
 		selenium.start();
-		selenium.open("/controller");
+		
 	}
-@Override	
-@Test
-public void run() throws Throwable{
-	super.run();
-}
-	
+
+	@Override
+	@Test
+	public void run() throws Throwable {
+		super.run();
+	}
+
 	@Override
 	protected List<String> storyPaths() {
 
@@ -71,5 +74,9 @@ public void run() throws Throwable{
 				Arrays.asList("**/" + System.getProperty("storyFilter", "*")
 						+ "panier.story"), null);
 	}
-	 
+	@After
+	public void stop() {
+		
+	}
+
 }

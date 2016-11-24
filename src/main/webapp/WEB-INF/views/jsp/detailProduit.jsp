@@ -54,10 +54,10 @@
 									<span> <span>${produit.prix} TND</span> <label>Quantité:</label>
 
 
-										<input type="text" name="qte" value="1" />
+										<input type="text" name="qte" id="qte" value="1" />
 
 
-										<button type="submit" class="btn btn-fefault cart">
+										<button id="ajouter_au_panier" type="submit" class="btn btn-fefault cart">
 											<i class="fa fa-shopping-cart"></i> ajouter au panier
 										</button>
 

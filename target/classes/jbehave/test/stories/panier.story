@@ -6,8 +6,5 @@ Narrative:
 Scénario: Ajouter un produit au panier
 			
 Given page liste Produit
-When l'usager choisi produit1
-Then  total 100$
-and Panier contient Produit1
-
-
+When je clique sur //a[@onclick="window.location.href='detailProduit.html?id=1'"] et je saisi 1 comme quantite et je clique sur ajouter_au_panier
+Then le total css=li:nth-child(3) de panier sera TOTAL : 114.5 $
