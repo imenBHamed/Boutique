@@ -4,24 +4,26 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import app.boutique.dto.Produit;
 
 public class Panier {
 
 	private List<Produit> items = new ArrayList<Produit>();
 
-	private double totalTPS=0.0;
-	private double totalTVQ = 0.0;
+	private double totalTPS=0.00;
+	private double totalTVQ = 0.00;
 	private double TPS = 0.05;
 	private double TVQ = 0.095;
-	private double total=0.0;
-	private double totalHT=0.0;
+	private double total=0.00;
+	private double totalHT=0.00;
 
 	public double arrondiDouble(double val){
-		DecimalFormat df=new DecimalFormat("0.0");
+		DecimalFormat df=new DecimalFormat("0.00");
 		String formate = df.format(val); 
+	
 		try {
-			return (Double)df.parse(formate);
+			return (Double)(df.parse(formate).doubleValue());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 
@@ -47,9 +49,9 @@ public class Panier {
 			items.add(produit);
 		}
 		totalHT= totalHT + (produit.getPrixTotal());		
-		totalTPS =  TPS * totalHT;
-		totalTVQ = arrondiDouble(TVQ * totalHT);
-		total =  arrondiDouble(totalHT + totalTVQ + totalTPS) ;
+		totalTPS = (Double)arrondiDouble(TPS * totalHT);
+		totalTVQ = (Double)arrondiDouble(TVQ * totalHT);
+		total =  (Double)arrondiDouble(totalHT + totalTVQ + totalTPS) ;
 	}
 
 	public void addQuantite (Produit produit){
