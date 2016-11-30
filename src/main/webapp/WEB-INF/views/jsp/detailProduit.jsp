@@ -51,7 +51,7 @@
 								<!--  <p>ID: 1089772</p>-->
 								<f:form action="addPanier.html" method="get">
 									<input type="hidden" name="id" value="${produit.idProduit}">
-									<span> <span>${produit.prix} TND</span> <label>Quantité:</label>
+									<span> <span>${produit.prix}$</span> <label>Quantité:</label>
 
 
 										<input type="text" name="qte" id="qte" value="1" />

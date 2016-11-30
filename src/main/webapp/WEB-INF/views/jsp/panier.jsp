@@ -74,7 +74,7 @@
 									<p>${item.description}</p>
 								</td>
 								<td class="cart_price">
-									<p>${item.prix}Dollars</p>
+									<p>${item.prix}$</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
@@ -125,4 +125,3 @@
 	<!--/#do_action-->
 
 </body>
-</html>
