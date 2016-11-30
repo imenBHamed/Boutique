@@ -71,7 +71,8 @@ public class AllStories extends JUnitStories {
 		return new StoryFinder().findPaths(
 				CodeLocations.codeLocationFromClass(this.getClass()).getFile(),
 				Arrays.asList("**/" + System.getProperty("storyFilter", "*")
-						+ "panier.story"), null);
+						+ ".story"), null);
+		
 	}
 
 	@After

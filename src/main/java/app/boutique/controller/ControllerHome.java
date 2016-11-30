@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import app.boutique.dto.Produit;
 import app.boutique.metier.IClientMetier;
 import app.boutique.metier.IProduitMetier;
+import app.boutique.model.ClientLogin;
 import app.boutique.model.Panier;
 
 @Controller
@@ -89,13 +90,13 @@ public class ControllerHome {
 	}
 
 	@RequestMapping(value = "/connecter")
-	public String seConnecter(@ModelAttribute Client client,
+	public String seConnecter(@ModelAttribute ClientLogin client,
 			HttpSession session, Model model) {
 
-		Client user = clientMetier.getClientByEmail(client.getEmail());
+		Client user = clientMetier.getClientByEmail(client.getEmail_c());
 
 		if (user != null) {
-			if (client.getPassword().equalsIgnoreCase(user.getPassword())) {
+			if (client.getPassword_c().equalsIgnoreCase(user.getPassword())) {
 
 				return "redirect:/panier.html";
 			} else {
@@ -116,7 +117,6 @@ public class ControllerHome {
 			model.addAttribute("errorsInscription", "Client existe déjà!");
 			return "login";
 		} else {
-
 			if (!client.getDateNaissance().equals("")) {
 				client.setDateNaissance(client.getDateNaissance());
 			}
@@ -124,7 +124,7 @@ public class ControllerHome {
 			clientMetier.insertClient(client);
 			model.addAttribute(
 					"succes",
-					"Votre compte a été créer avec succès, vous pouvez se connecter dès maintenant!");
+					"Votre compte a été crée avec succès, vous pouvez se connecter dès maintenant!");
 			return "login";
 		}
 	}

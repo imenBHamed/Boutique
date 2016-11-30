@@ -45,8 +45,8 @@
 						<p><font color="red"> ${errors}</font></p>
 						</c:if>
 						 <f:form cssClass="form-signin" action="connecter.html" method="post" modelAttribute="client">
-							<input type="email" name="email" placeholder="Email" required />
-							<input type="password" name="password" placeholder="Mot de passe" required />
+							<input type="email" name="email_c" placeholder="Email" required />
+							<input type="password" name="password_c" placeholder="Mot de passe" required />
 							<button type="submit" class="btn btn-default">Login</button>
 						</f:form>
 					</div><!--/login form-->
@@ -69,7 +69,7 @@
 							<input type="text" name="tel" placeholder="Telephone" required/>
 							<input type="date" name="dateNaissance" id="datepicker" placeholder="date naissance" >
 							
-							<button type="submit" class="btn btn-default">Valider</button>
+							<button type="submit" title="valider" class="btn btn-default">Valider</button>
 						</f:form>
 					</div><!--/sign up form-->
 				</div>
