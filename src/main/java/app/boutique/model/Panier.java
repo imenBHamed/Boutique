@@ -22,7 +22,7 @@ public class Panier {
 		DecimalFormat df=new DecimalFormat("0.00");
 		String formate = df.format(val); 
 		try {
-			return (Double)df.parse(formate);
+			return (Double)(df.parse(formate).doubleValue());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,7 +48,7 @@ public class Panier {
 		}
 		 
 		totalHT= totalHT + (produit.getPrixTotal());		
-		totalTPS = TPS * totalHT;
+		totalTPS = (Double)arrondiDouble(TPS * totalHT);
 		totalTVQ =  (Double)arrondiDouble(TVQ * totalHT);
 		total =  (Double)arrondiDouble(totalHT + totalTVQ + totalTPS) ;
 	}
