@@ -2,14 +2,11 @@ import java.text.Format;
 import java.util.Arrays;
 import java.util.List;
 
-import jbehave.test.steps.PanierSteps;
-
 import org.jbehave.core.Embeddable;
 import org.jbehave.web.selenium.SeleniumConfiguration;
 import org.jbehave.web.selenium.SeleniumContext;
 import org.jbehave.web.selenium.SeleniumStepMonitor;
 import org.jbehave.core.configuration.Configuration;
-import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
@@ -21,8 +18,6 @@ import org.jbehave.core.steps.SilentStepMonitor;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.google.common.util.concurrent.MoreExecutors;
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.Selenium;
 
@@ -47,22 +42,26 @@ public class AllStories extends JUnitStories {
 						new StoryReporterBuilder()
 								.withFormats(org.jbehave.core.reporters.StoryReporterBuilder.Format.CONSOLE));
 	}
-	
-	  @Override
-	    public List<CandidateSteps> candidateSteps() {        
-	       
-	        return new InstanceStepsFactory(configuration(), new PanierSteps(selenium)).createCandidateSteps();
-	    }
+
+	@Override
+	public List<CandidateSteps> candidateSteps() {
+
+		return new InstanceStepsFactory(configuration(),
+				new jbehave.test.steps.PanierSteps(selenium))
+				.createCandidateSteps();
+	}
 
 	@Before
 	public void setUp() throws Exception {
+
 		selenium.start();
-		
+
 	}
 
 	@Override
 	@Test
 	public void run() throws Throwable {
+
 		super.run();
 	}
 
@@ -74,9 +73,10 @@ public class AllStories extends JUnitStories {
 				Arrays.asList("**/" + System.getProperty("storyFilter", "*")
 						+ "panier.story"), null);
 	}
+
 	@After
 	public void stop() {
-		
+
 	}
 
 }

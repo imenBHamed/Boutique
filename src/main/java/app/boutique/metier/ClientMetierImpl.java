@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import app.boutique.dao.ClientDAOImpl;
 import app.boutique.dto.Client;
 
- 
+
 @Transactional
 public class ClientMetierImpl implements IClientMetier{
 
@@ -32,6 +32,11 @@ public class ClientMetierImpl implements IClientMetier{
 	public Client getClientByEmail(String email) {
 
 		return  clientDAO.getClientByEmail(email);
+	}
+
+	@Override
+	public void insertClient(Client client) {
+		clientDAO.insertClient(client);		
 	}
 
 }

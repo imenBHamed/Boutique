@@ -16,7 +16,7 @@ public class ProduitDAOImpl implements IProduitDAO {
 	private EntityManager em;
 	
 	@Override
-	public Produit getProduitById(long idProduit) {
+	public Produit getProduitById(int idProduit) {
 		return em.find(Produit.class, idProduit);
 	}
 

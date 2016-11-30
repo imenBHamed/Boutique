@@ -2,8 +2,8 @@ package app.boutique.model;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
 
 import app.boutique.dto.Produit;
 
@@ -11,36 +11,34 @@ public class Panier {
 
 	private List<Produit> items = new ArrayList<Produit>();
 
-	private double totalTPS=0.00;
-	private double totalTVQ = 0.00;
+	private double totalTPS=0.0;
+	private double totalTVQ = 0.0;
 	private double TPS = 0.05;
 	private double TVQ = 0.095;
-	private double total=0.00;
-	private double totalHT=0.00;
+	private double total=0.0;
+	private double totalHT=0.0;
 
-	public double arrondiDouble(double val){
+	public double arrondiDouble(double val) {
 		DecimalFormat df=new DecimalFormat("0.00");
 		String formate = df.format(val); 
-	
 		try {
-			return (Double)(df.parse(formate).doubleValue());
+			return (Double)df.parse(formate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-
+			e.printStackTrace();
 		}
 		return 0.0;
 	}
 	
-	public void addPanier (Produit produit){
+	public void addPanier (Produit produit) {
 		boolean ok= false;
 		if (this.getItems().size()>0)
 			for(Produit item : this.getItems()){
-				if (item.getIdProduit()==produit.getIdProduit()){
+				if (item.getIdProduit()== produit.getIdProduit()){
 					ok= true;
 					Produit prodPanier = item;
 					item.setQuantitePanier(prodPanier.getQuantitePanier() + produit.getQuantitePanier() );
-					System.out.print(produit.getQuantitePanier());
- 					produit.setPrixTotal(item.getQuantitePanier() *produit.getPrix());
+					produit.setPrixTotal(item.getQuantitePanier() *produit.getPrix());
 					this.items.get(this.items.indexOf(item)).setPrixTotal(produit.getPrixTotal());
 				}
 			}
@@ -48,22 +46,30 @@ public class Panier {
 			produit.setPrixTotal(produit.getQuantitePanier() *produit.getPrix());
 			items.add(produit);
 		}
+		 
 		totalHT= totalHT + (produit.getPrixTotal());		
-		totalTPS = (Double)arrondiDouble(TPS * totalHT);
-		totalTVQ = (Double)arrondiDouble(TVQ * totalHT);
+		totalTPS = TPS * totalHT;
+		totalTVQ =  (Double)arrondiDouble(TVQ * totalHT);
 		total =  (Double)arrondiDouble(totalHT + totalTVQ + totalTPS) ;
 	}
 
-	public void addQuantite (Produit produit){
-		produit.setQuantitePanier(produit.getQuantitePanier()  + 1);
+	public void deletePanier (Produit produit) {
+		
+		for (Iterator<Produit> iterator = this.getItems().iterator(); iterator.hasNext(); ) {
+		    Produit value = iterator.next();
+		    if (value.getIdProduit()== produit.getIdProduit()){
+		    	System.out.print(value.getQuantitePanier());
+		        iterator.remove();
+		    	totalHT = totalHT - (value.getPrixTotal());
+				totalTPS =  (Double)arrondiDouble(TPS * totalHT);
+				totalTVQ = (Double)arrondiDouble(TVQ * totalHT); 
+				total =  totalHT + totalTVQ + totalTPS ;
+		    }
+		}
+		
+	
 	}
-
-	public void removePanier (Produit produit){
-		items.remove(produit);
-		totalTPS = totalTPS - (produit.getPrix()*produit.getQuantitePanier());
-		totalTVQ = totalTVQ - (produit.getPrix()*produit.getQuantitePanier());
-	}
-
+	
 	public Panier() {
 		super();
 	}

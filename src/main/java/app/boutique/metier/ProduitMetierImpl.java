@@ -18,7 +18,7 @@ public class ProduitMetierImpl implements IProduitMetier {
 	}
 
 	@Override
-	public Produit getProduitById(long idProduit) {
+	public Produit getProduitById(int idProduit) {
 		return produitDAO.getProduitById(idProduit);
 	}
 

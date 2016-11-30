@@ -8,7 +8,7 @@ import app.boutique.dto.Produit;
 
 
 public interface IProduitDAO {
-	public Produit getProduitById (long idProduit);
+	public Produit getProduitById (int idProduit);
 	public List<Produit> lisProduits();
 	
 }
