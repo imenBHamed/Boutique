@@ -88,7 +88,8 @@
 									<p class="cart_total_price">${item.prixTotal}$</p>
 								</td>
 								<td class="cart_delete"><a class="cart_quantity_delete"
-									onclick="window.location.href='removeItem.html?id=${item.idProduit}'"><i class="fa fa-times"></i></a></td>
+									onclick="window.location.href='removeItem.html?id=${item.idProduit}'"><i
+										class="fa fa-times"></i></a></td>
 							</tr>
 						</c:forEach>
 

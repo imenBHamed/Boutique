@@ -7,19 +7,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arti_Tunisie</title>
-   <link href="<%=request.getContextPath()%>/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<%=request.getContextPath()%>/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="<%=request.getContextPath()%>/resources/assets/css/prettyPhoto.css" rel="stylesheet" />
-   <link href="<%=request.getContextPath()%>/resources/assets/css/price-range.css" rel="stylesheet" />
-      <link href="<%=request.getContextPath()%>/resources/assets/css/animate.css" rel="stylesheet" />
-           <link href="<%=request.getContextPath()%>/resources/assets/css/main.css" rel="stylesheet" />
-   <link
+<title>Arti_Tunisie</title>
+<link
+	href="<%=request.getContextPath()%>/resources/assets/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link
+	href="<%=request.getContextPath()%>/resources/assets/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link
+	href="<%=request.getContextPath()%>/resources/assets/css/prettyPhoto.css"
+	rel="stylesheet" />
+<link
+	href="<%=request.getContextPath()%>/resources/assets/css/price-range.css"
+	rel="stylesheet" />
+<link
+	href="<%=request.getContextPath()%>/resources/assets/css/animate.css"
+	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/assets/css/main.css"
+	rel="stylesheet" />
+<link
 	href="<%=request.getContextPath()%>/resources/assets/css/responsive.css"
 	rel="stylesheet" />
-  
-<!--/head-->
 
+<!--/head-->
 <body>
 	<header id="header">
 		<!--header-->
@@ -31,7 +41,7 @@
 
 	<section>
 		<div class="container">
-	<%@ include file="header_client.jsp"%>
+			<%@ include file="header_client.jsp"%>
 			<div class="row">
 
 
@@ -57,7 +67,8 @@
 										<input type="text" name="qte" id="qte" value="1" />
 
 
-										<button id="ajouter_au_panier" type="submit" class="btn btn-fefault cart">
+										<button id="ajouter_au_panier" type="submit"
+											class="btn btn-fefault cart">
 											<i class="fa fa-shopping-cart"></i> ajouter au panier
 										</button>
 
@@ -73,7 +84,7 @@
 										<b>disponibilité:</b> Hors Stock
 									</p>
 								</c:if>
-							 
+
 
 
 							</div>
@@ -88,6 +99,6 @@
 	</section>
 
 
-	 
+
 </body>
 </html>

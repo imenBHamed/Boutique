@@ -59,7 +59,8 @@
 											<p>${prod.nomProduit}</p>
 											<p>${prod.taille}</p>
 											<a class="btn btn-default add-to-cart"
-												onclick="window.location.href='detailProduit.html?id=${prod.idProduit}'">Detail Produit</a>
+												onclick="window.location.href='detailProduit.html?id=${prod.idProduit}'">Detail
+												Produit</a>
 										</div>
 									</div>
 								</div>
@@ -74,6 +75,6 @@
 		</div>
 
 	</section>
-	 
- </body>
+
+</body>
 </html>

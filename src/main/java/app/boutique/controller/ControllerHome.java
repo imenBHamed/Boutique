@@ -122,8 +122,7 @@ public class ControllerHome {
 			}
 			client.setDateInscription(new Date());
 			clientMetier.insertClient(client);
-			model.addAttribute(
-					"succes",
+			model.addAttribute("succes",
 					"Votre compte a été crée avec succès, vous pouvez se connecter dès maintenant!");
 			return "login";
 		}

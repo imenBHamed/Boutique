@@ -32,14 +32,14 @@ public class AllStories extends JUnitStories {
 		Class<? extends Embeddable> embeddableClass = this.getClass();
 		selenium.setContext("A real test, using the real Selenium on the browser side served by jetty, driven from java");
 		return new SeleniumConfiguration()
-				.useSelenium(selenium)
-				.useSeleniumContext(seleniumContext)
-				.useStepMonitor(
-						new SeleniumStepMonitor(selenium, seleniumContext,
-								new SilentStepMonitor()))
-				.useStoryLoader(new LoadFromClasspath(embeddableClass))
-				.useStoryReporterBuilder(
-						new StoryReporterBuilder()
+		.useSelenium(selenium)
+		.useSeleniumContext(seleniumContext)
+		.useStepMonitor(
+				new SeleniumStepMonitor(selenium, seleniumContext,
+						new SilentStepMonitor()))
+						.useStoryLoader(new LoadFromClasspath(embeddableClass))
+						.useStoryReporterBuilder(
+								new StoryReporterBuilder()
 								.withFormats(org.jbehave.core.reporters.StoryReporterBuilder.Format.CONSOLE));
 	}
 
@@ -48,7 +48,7 @@ public class AllStories extends JUnitStories {
 
 		return new InstanceStepsFactory(configuration(),
 				new jbehave.test.steps.PanierSteps(selenium))
-				.createCandidateSteps();
+		.createCandidateSteps();
 	}
 
 	@Before
@@ -72,7 +72,7 @@ public class AllStories extends JUnitStories {
 				CodeLocations.codeLocationFromClass(this.getClass()).getFile(),
 				Arrays.asList("**/" + System.getProperty("storyFilter", "*")
 						+ ".story"), null);
-		
+
 	}
 
 	@After

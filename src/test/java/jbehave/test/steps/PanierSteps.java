@@ -38,18 +38,21 @@ public class PanierSteps extends SeleniumSteps {
 
 	@Then("le compte de client $msg")
 	public void thenLeClientSestInscrit(String msg) {
-		String message="Votre compte "+ msg +", vous pouvez se connecter dès maintenant!";
-		assertThat(selenium.getText("//div[@class='signup-form']/p[2]"), equalTo(message));
-	  
+		String message ="Votre compte a été crée avec succès, vous pouvez se connecter dès maintenant!";
+		assertThat(selenium.getText("//div[@class='signup-form']/p[2]"), equalTo(message)); 
 	}
 	
-	
+	@Then("le compte est déjà existe")
+	public void thenLeCompteEstDejaExiste() {
+		assertThat(selenium.getText("//div[@class='signup-form']/p[1]"), equalTo("Client existe déjà!")); 
+		}
+
 	@Given("panier est vide")
 	public void givenPaniervide() {
 		panier = new Panier();
 	}
 
-	@Given("liste de produits contient produit 1 avec prix 1050.215 et produit 2 avec prix 100.125")
+	@Given("liste de produits contient produit 1 avec prix 1050.21 et produit 2 avec prix 100.12")
 	public void givenListeDeProduits() {
 		selenium.open("/controller/listProduit.html");
 	}
