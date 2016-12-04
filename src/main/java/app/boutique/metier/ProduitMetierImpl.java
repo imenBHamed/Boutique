@@ -1,13 +1,10 @@
 package app.boutique.metier;
 
 import java.util.List;
-
 import org.springframework.transaction.annotation.Transactional;
-
 import app.boutique.dao.ProduitDAOImpl;
 import app.boutique.dto.Produit;
 
- 
 @Transactional
 public class ProduitMetierImpl implements IProduitMetier {
 

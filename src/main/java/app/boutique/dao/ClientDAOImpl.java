@@ -3,12 +3,7 @@ package app.boutique.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import app.boutique.dto.Client;
-
-
-
-
 
 public class ClientDAOImpl implements ICLientDAO {
 

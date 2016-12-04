@@ -55,6 +55,5 @@ public class PanierTestTotaux {
 	public void testAddPanierTotal(){	
 		assertEquals("Expected total", 240.45, panier.getTotal(),0);
 	}
-	
 
 }

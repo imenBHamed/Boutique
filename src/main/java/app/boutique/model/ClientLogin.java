@@ -27,5 +27,4 @@ public class ClientLogin {
 		this.password_c = password_c;
 	}
 	
-
 }

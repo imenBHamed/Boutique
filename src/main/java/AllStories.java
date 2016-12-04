@@ -79,5 +79,4 @@ public class AllStories extends JUnitStories {
 	public void stop() {
 
 	}
-
 }
