@@ -19,6 +19,8 @@ public class PanierSteps extends SeleniumSteps {
 		super(selenium);
 	}
 
+	/* ***************** Test Inscription ***************** */
+	
 	@Given("l'utilisateur veut s'inscrire")
 	public void givenLutilisateurVeutSinscrire() {
 		selenium.open("/controller/login.html");
@@ -50,6 +52,8 @@ public class PanierSteps extends SeleniumSteps {
 				equalTo("Client existe déjà!"));
 	}
 
+	/* ************************ Test Login *************************** */
+	
 	@Given("le client veut se connecter")
 	public void givenLeClientVeutSeConnecter() {
 		selenium.open("/controller/login.html");
@@ -75,6 +79,8 @@ public class PanierSteps extends SeleniumSteps {
 				equalTo(msg));
 	}
 
+	/******************* Test Panier ********************* */
+	
 	@Given("panier est vide")
 	public void givenPaniervide() {
 		panier = new Panier();
@@ -101,5 +107,14 @@ public class PanierSteps extends SeleniumSteps {
 		String totalPtix = "TOTAL : " + prix + " $";
 		assertThat(selenium.getText("css=li:nth-child(3)"), equalTo(totalPtix));
 	}
+	
+	@When("je supprime le produit $id du mon panier")
+	public void whenJeSupprimeUnProduitDuMonPanier(String id) {
+		String xpath = "//a[@onclick=\"window.location.href='removeItem.html?id="
+				+ id + "'\"]";
+		selenium.click("xpath=" + xpath);
+		selenium.waitForPageToLoad("30000");
 
+	}
+	
 }
