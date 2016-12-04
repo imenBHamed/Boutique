@@ -79,7 +79,7 @@
 						<input type="email" name="email_c" placeholder="Email" required />
 						<input type="password" name="password_c"
 							placeholder="Mot de passe" required />
-						<button type="submit" class="btn btn-default">Login</button>
+						<button type="submit" title="login" class="btn btn-default">Login</button>
 					</f:form>
 				</div>
 				<!--/login form-->

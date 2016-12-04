@@ -115,7 +115,7 @@
 							<li>TOTAL : <span>${panier.total} $</span>
 							</li>
 						</ul>
-						<a href="login.html" class="btn btn-default check_out">Valider
+						<a href="login.html" title="valider_panier" class="btn btn-default check_out">Valider
 							Panier</a>
 					</div>
 				</div>

@@ -25,27 +25,55 @@ public class PanierSteps extends SeleniumSteps {
 	}
 
 	@When("il saisi son nom $nom , son prenom $prenom , son numero de tel $tel , sa date de naissance $dateNaiss , son adresse email $email et son mot de passe $password")
-	public void whenIlSaisiInformations(String nom, String prenom, String tel, String dateNaiss, String email, String password) {
+	public void whenIlSaisiInformations(String nom, String prenom, String tel,
+			String dateNaiss, String email, String password) {
 		selenium.type("nomClient", nom);
-		  selenium.type("prenomClient", prenom);
-		  selenium.type("email", email);
-		  selenium.type("password", password);
-		  selenium.type("tel", tel);
-		  selenium.type("dateNaissance", dateNaiss);
-		  selenium.click("//button[@title='valider']");
-		  selenium.waitForPageToLoad("30000");
+		selenium.type("prenomClient", prenom);
+		selenium.type("email", email);
+		selenium.type("password", password);
+		selenium.type("tel", tel);
+		selenium.type("dateNaissance", dateNaiss);
+		selenium.click("//button[@title='valider']");
+		selenium.waitForPageToLoad("30000");
 	}
 
 	@Then("le compte de client $msg")
 	public void thenLeClientSestInscrit(String msg) {
-		String message ="Votre compte a été crée avec succès, vous pouvez se connecter dès maintenant!";
-		assertThat(selenium.getText("//div[@class='signup-form']/p[2]"), equalTo(message)); 
+		String message = "Votre compte a été crée avec succès, vous pouvez se connecter dès maintenant!";
+		assertThat(selenium.getText("//div[@class='signup-form']/p[2]"),
+				equalTo(message));
 	}
-	
+
 	@Then("le compte est déjà existe")
 	public void thenLeCompteEstDejaExiste() {
-		assertThat(selenium.getText("//div[@class='signup-form']/p[1]"), equalTo("Client existe déjà!")); 
-		}
+		assertThat(selenium.getText("//div[@class='signup-form']/p[1]"),
+				equalTo("Client existe déjà!"));
+	}
+
+	@Given("le client veut se connecter")
+	public void givenLeClientVeutSeConnecter() {
+		selenium.open("/controller/login.html");
+	}
+
+	@When("il saisit son adresse email $email et son mot de passe $password")
+	public void whenIlSaisiEmailPassowd(String email, String password) {
+		selenium.type("email_c", email);
+		selenium.type("password_c", password);
+		selenium.click("//button[@title='login']");
+		selenium.waitForPageToLoad("30000");
+	}
+
+	@Then("son panier sera affiché")
+	public void thenLeClientSeConnecte() {
+		assertThat(selenium.getText("//a[@title='valider_panier']"),
+				equalTo("Valider Panier"));
+	}
+
+	@Then("un message d'erreur $msg sera affiché")
+	public void thenUnMsgAffiche(String msg) {
+		assertThat(selenium.getText("//div[@class='login-form']/p[1]"),
+				equalTo(msg));
+	}
 
 	@Given("panier est vide")
 	public void givenPaniervide() {
@@ -59,7 +87,8 @@ public class PanierSteps extends SeleniumSteps {
 
 	@When("je selectionne produit $id et je saisi $qte comme quantite")
 	public void whenJeCliqueSur(String id, String qte) {
-		String xpath = "//a[@onclick=\"window.location.href='detailProduit.html?id="+ id + "'\"]";
+		String xpath = "//a[@onclick=\"window.location.href='detailProduit.html?id="
+				+ id + "'\"]";
 		selenium.click("xpath=" + xpath);
 		selenium.waitForPageToLoad("30000");
 		selenium.type("qte", qte);
@@ -72,6 +101,5 @@ public class PanierSteps extends SeleniumSteps {
 		String totalPtix = "TOTAL : " + prix + " $";
 		assertThat(selenium.getText("css=li:nth-child(3)"), equalTo(totalPtix));
 	}
-	
 
 }
