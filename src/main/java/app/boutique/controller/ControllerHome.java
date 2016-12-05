@@ -71,7 +71,6 @@ public class ControllerHome {
 		Panier panier = (Panier) session.getAttribute("panier");
 
 		Produit produit = produitMetier.getProduitById(id);
-		// System.out.print(produit.getPrix());
 		panier.deletePanier(produit);
 		session.setAttribute("panier", panier);
 		return "redirect:/panier.html";
@@ -114,7 +113,7 @@ public class ControllerHome {
 	public String saveClient(@ModelAttribute Client client, Model model) {
 		Client clientOK = clientMetier.getClientByEmail(client.getEmail());
 		if (clientOK != null) {
-			model.addAttribute("errorsInscription", "Client existe dÈj‡!");
+			model.addAttribute("errorsInscription", "Client existe d√©j√†!");
 			return "login";
 		} else {
 			if (!client.getDateNaissance().equals("")) {
@@ -123,7 +122,7 @@ public class ControllerHome {
 			client.setDateInscription(new Date());
 			clientMetier.insertClient(client);
 			model.addAttribute("succes",
-					"Votre compte a ÈtÈ crÈe avec succËs, vous pouvez se connecter dËs maintenant!");
+					"Votre compte a √©t√© cr√©e avec succ√®s, vous pouvez se connecter d√®s maintenant!");
 			return "login";
 		}
 	}
