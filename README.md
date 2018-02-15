@@ -3,7 +3,7 @@ Ce projet a pour but de nous familiariser avec le développement de tests d'acce
 
 # Description de l'application
 c'est une application Web qui donne la possibilité aux internautes de magasiner d'une boutique pour habits traditionnels située à l'étranger sans avoir à se déplacer de leurs domiciles.
-Cette application Web est composée des deux modules suivants:
+Cette application Web est composée des deux modules:
 ● Module de gestion des comptes des utilisateurs qui prend en charge la création de nouveaux comptes utilisateurs et l'authentification.
 ● Module de gestion de panier qui inclut la visualisation des articles disponibles ainsi que leurs détails et l’ajout et la suppression d’articles du panier.
 # Technologies utilisées
